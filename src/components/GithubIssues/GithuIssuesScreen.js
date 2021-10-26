@@ -14,6 +14,7 @@ import {
   FiStar,
   FiGitMerge
 } from "react-icons/fi";
+import { CreateIssueScreen } from "./CreateIssueScreen/CreateIssueScreen";
 
 export const GithubIssuesScreen = () => {
 	return (
@@ -123,6 +124,12 @@ export const GithubIssuesScreen = () => {
 					</ul>
 				</div>
 			</nav>
+
+      <div>
+        
+        <CreateIssueScreen />
+
+      </div>
 		</>
 	);
 };
