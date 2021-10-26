@@ -1,0 +1,21 @@
+.navbar-githubissues {
+  padding-bottom: 0;
+}
+
+.navbar-nav-githubissues > .nav-item {
+  margin-left: 2em;
+}
+
+.navbar-nav-githubissues > .nav-item > .nav-link {
+  font-size: 15px;
+}
+
+.container-information .container-names {
+  font-size: 20px;
+}
+
+.project-name {
+  font-weight: bold;
+}
+
+.container-buttons >  {}

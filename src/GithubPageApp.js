@@ -1,9 +1,11 @@
-import { Navbar } from "./components/shared/Navbar/Navbar";
+import { AppRouter } from "routes/AppRouter";
 
 function GithubPageApp() {
-	return <>
-    <Navbar />
-  </>;
+	return (
+    <>
+      <AppRouter />
+    </>
+  );
 }
 
 export default GithubPageApp;
