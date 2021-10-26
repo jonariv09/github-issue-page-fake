@@ -25,6 +25,7 @@ export const GithubIssuesScreen = () => {
             <div className="container-names">
               <FiBookmark />
               <a href="#"> jonariv09 </a> / <a className="project-name" href="#"> my-project </a>
+              <span class="badge bg-light border badge-type-project rounded-pill">Light</span>
             </div>
           </div>
 

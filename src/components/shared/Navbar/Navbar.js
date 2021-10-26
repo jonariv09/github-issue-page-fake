@@ -44,9 +44,9 @@ export const Navbar = () => {
           <ul class="navbar-nav mb-2 mb-lg-0">
 
             <li class="nav-item me-3">
-                <a class="nav-link" href="#">
+                <a class="nav-link position-relative" href="#">
                   <FiBell />
-                  <span class="badge badge-secondary"> 0 </span>
+                  <span class="position-absolute top-70 start-80 translate-middle p-1 bg-primary border border-light rounded-circle"> </span>
                 </a>
             </li>
 
