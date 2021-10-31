@@ -7,3 +7,9 @@ export const createIssue = (title, comment) => ({
     comment
   }
 })
+
+export const loadIssues = (notes) => ({
+  type: types.loadIssues,
+  payload: notes
+})
+

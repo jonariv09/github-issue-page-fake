@@ -15,10 +15,12 @@ import {
   FiGitMerge
 } from "react-icons/fi";
 import { CreateIssueScreen } from "./CreateIssueScreen/CreateIssueScreen";
+import { useSelector } from "react-redux";
+import { ListIssues } from "./ListIssues/ListIssues";
 
 export const GithubIssuesScreen = () => {
 
-	
+	const { newIssueState } = useSelector((state) => state.ui);
 
 	return (
 		<>
@@ -129,8 +131,11 @@ export const GithubIssuesScreen = () => {
 
       <div>
 
-
-        <CreateIssueScreen />
+				{
+					newIssueState
+						? (<CreateIssueScreen />)
+						: (<ListIssues />)
+				}
 
       </div>
 		</>
