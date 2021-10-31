@@ -17,6 +17,9 @@ import {
 import { CreateIssueScreen } from "./CreateIssueScreen/CreateIssueScreen";
 
 export const GithubIssuesScreen = () => {
+
+	
+
 	return (
 		<>
 			<Navbar />
@@ -31,7 +34,6 @@ export const GithubIssuesScreen = () => {
           </div>
 
           <div className="container-buttons ms-3 me-5 d-flex">
-
             <div class="btn-group ">
               <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Small button
@@ -126,7 +128,8 @@ export const GithubIssuesScreen = () => {
 			</nav>
 
       <div>
-        
+
+
         <CreateIssueScreen />
 
       </div>

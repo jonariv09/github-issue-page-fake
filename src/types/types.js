@@ -8,5 +8,9 @@ export const types = {
   closeIssue: "[Issue] Close Github issue",
   reopenIssue: "[Issue] Reopen Github issue",
   commentIssue: "[Issue] Comment Github issue",
-  editTitleIssue: "[Issue] Edit tite Github issue"
+  editTitleIssue: "[Issue] Edit tite Github issue",
+  loadIssues: "[Issue] Load Github issues",
+
+
+  newIssue: "[UI] Press new issue button"
 };
