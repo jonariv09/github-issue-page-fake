@@ -41,18 +41,18 @@ export const Navbar = () => {
             
           </ul>
 
-          <ul class="navbar-nav mb-2 mb-lg-0">
+          <ul class="navbar-nav mb-2 mb-lg-0 d-flex align-items-center">
 
             <li class="nav-item me-3">
                 <a class="nav-link position-relative" href="#">
-                  <FiBell />
-                  <span class="position-absolute top-70 start-80 translate-middle p-1 bg-primary border border-light rounded-circle"> </span>
+                  <FiBell className="notification-bell"/>
+                  <span class="absolute top-0 right-1 inline-block w-2 h-2 transform bg-red-600 rounded-full"></span>
                 </a>
             </li>
 
-            <li class="nav-item me-2">
+            <li class="nav-item me-2 d-flex align-items-center">
               <div className="dropdown">
-                <a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <a className="btn btn-secondary dropdown-toggle d-flex align-items-center h-10" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                   <FiPlus />
                 </a>
 
@@ -67,7 +67,7 @@ export const Navbar = () => {
 
             <li class="nav-item me-2">
               <div className="dropdown">
-                <a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <a className="btn btn-secondary dropdown-toggle d-flex align-items-center h-10" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                   <FiUser />
                 </a>
 

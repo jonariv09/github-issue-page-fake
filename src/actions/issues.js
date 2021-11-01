@@ -12,4 +12,3 @@ export const loadIssues = (notes) => ({
   type: types.loadIssues,
   payload: notes
 })
-
