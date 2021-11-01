@@ -1,0 +1,12 @@
+/* .table-issues > , .table-issues >  th[scope="col"].col-check {
+  width: 1em;
+} */
+
+
+/* .table-row-issues > th[scope="col"] {
+  width: 1em;
+} */
+
+.icon-issue {
+  font-size: 16px;
+}
