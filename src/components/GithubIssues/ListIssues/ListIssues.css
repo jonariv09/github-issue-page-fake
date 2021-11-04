@@ -14,3 +14,8 @@
 /* .container-option-buttons {
   text-transform: none;
 } */
+
+.dropdown-active {
+  display: block;
+  position: absolute;
+}

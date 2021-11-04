@@ -3,6 +3,7 @@ import { FiCheck, FiStopCircle, FiTag } from "react-icons/fi"
 import { GoMilestone } from "react-icons/go";
 import { useDispatch, useSelector } from "react-redux";
 import './ListIssues.css';
+import {createRef} from "react";
 
 /* This example requires Tailwind CSS v2.0+ */
 const issues = [
@@ -19,6 +20,7 @@ const issues = [
 export const ListIssues = () => {
 
   const dispatch = useDispatch();
+  const dropdownRef = createRef();
   const { allSelected } = useSelector(state => state.issues);
   let issueItems = [];
 
@@ -32,6 +34,14 @@ export const ListIssues = () => {
       dispatch(unSelectAll());
   }
 
+  const displayMenu = (e) => {
+    let dropdown = dropdownRef.current;
+    if(!dropdown.className.includes("dropdown-active"))
+      dropdown.className = dropdown.className + " dropdown-active"
+    else
+      dropdown.className = dropdown.className.replace("dropdown-active", "");
+  }
+
   return (
     <div className="">
       <div className="container mt-3">
@@ -41,10 +51,13 @@ export const ListIssues = () => {
 
             <div className="input-group">
               <div className="input-group-prepend">
-                <button className="btn btn-outline-secondary dropdown-toggle text-sm font-semibold" type="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Dropdown
+                <button className="btn hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 dropdown-toggle text-sm font-semibold dropdown-toggle" type="button"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                  onClick={displayMenu}
+                >
+                  Filters
                 </button>
-                <div className="dropdown-menu">
+                <div className="dropdown-menu" ref={dropdownRef}>
                   <a className="dropdown-item" href="#">Action</a>
                   <a className="dropdown-item" href="#">Another action</a>
                   <a className="dropdown-item" href="#">Something else here</a>
