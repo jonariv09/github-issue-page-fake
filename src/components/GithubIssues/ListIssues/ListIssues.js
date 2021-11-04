@@ -83,8 +83,8 @@ export const ListIssues = () => {
               </button>
             </div>
 
-            <button className="bg-blue-500 hover:bg-blue-700 text-white text-base font-semibold px-4 rounded">
-              Button
+            <button className="bg-green-500 hover:bg-green-700 text-white text-sm font-medium rounded w-32">
+              New issue
             </button>
           </div>
         </div>
