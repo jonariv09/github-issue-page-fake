@@ -10,7 +10,8 @@ export const types = {
   commentIssue: "[Issue] Comment Github issue",
   editTitleIssue: "[Issue] Edit tite Github issue",
   loadIssues: "[Issue] Load Github issues",
+  selectAll: "[Issue] Select all issues",
+  unSelectAll: "[Issue] UnSelect all issues",
 
-
-  newIssue: "[UI] Press new issue button"
+  newIssue: "[UI] Press new issue button",
 };

@@ -34,6 +34,16 @@ export const issuesReducer = (state = initialState, action) => {
         ...state,
         issues: state.issues.filter(issue => issue.id !== action.payload.id)
       }
+    case types.selectAll:
+      return {
+        ...state,
+        allSelected: true
+      }
+    case types.unSelectAll:
+      return {
+        ...state,
+        allSelected: false
+      }
     default:
       return state;
   }

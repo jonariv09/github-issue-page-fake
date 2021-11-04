@@ -12,3 +12,11 @@ export const loadIssues = (notes) => ({
   type: types.loadIssues,
   payload: notes
 })
+
+export const selectAll = () => ({
+  type: types.selectAll
+})
+
+export const unSelectAll = () => ({
+  type: types.unSelectAll
+})

@@ -1,26 +1,96 @@
-import { FiStopCircle, FiCheck } from "react-icons/fi"
+import {selectAll, unSelectAll} from "actions/issues";
+import { FiCheck, FiStopCircle, FiTag } from "react-icons/fi"
+import { GoMilestone } from "react-icons/go";
+import { useDispatch, useSelector } from "react-redux";
 import './ListIssues.css';
 
 /* This example requires Tailwind CSS v2.0+ */
-const people = [
+const issues = [
   {
-    name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
+    uid: '24353w4234',
+    title: 'This is my title',
+    comment: 'This is my comment'
   },
   // More people...
 ]
 
+
+
 export const ListIssues = () => {
+
+  const dispatch = useDispatch();
+  const { allSelected } = useSelector(state => state.issues);
+  let issueItems = [];
+
+  const selectAllIssues = (e) => {
+
+    const { checked } = e.target;
+
+    if(checked)
+      dispatch(selectAll());
+    else
+      dispatch(unSelectAll());
+  }
+
   return (
     <div className="">
-      <div className="container">
+      <div className="container mt-3">
+        <div className="min-w-full sm:px-6 lg:px-8 d-flex">
+
+          <div className="w-3/5">
+
+            <div className="input-group">
+              <div className="input-group-prepend">
+                <button className="btn btn-outline-secondary dropdown-toggle text-sm font-semibold" type="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Dropdown
+                </button>
+                <div className="dropdown-menu">
+                  <a className="dropdown-item" href="#">Action</a>
+                  <a className="dropdown-item" href="#">Another action</a>
+                  <a className="dropdown-item" href="#">Something else here</a>
+                  <div role="separator" className="dropdown-divider"></div>
+                  <a className="dropdown-item" href="#">Separated link</a>
+                </div>
+              </div>
+              <input className="appearance-none border rounded w-full px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline form-control" id="username" type="text" aria-label="Text input with dropdown button" />
+            </div>
+
+          </div>
+
+          <div className="w-2/5 d-flex justify-content-end">
+
+            <div className="inline-flex w-100 d-flex justify-content-center">
+              <button className="
+                hover:bg-gray-200
+                text-gray-800 font-bold border
+                border-gray-400 px-4 rounded-l
+                d-flex justify-content-between align-items-center
+              ">
+                <FiTag className="ms-1"/>
+                <span className="ms-1 text-sm font-medium"> Labels </span>
+                <span
+                    className="ms-1 inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">9</span>
+              </button>
+              <button className="
+                  hover:bg-gray-200 text-gray-800 font-bold border
+                  border-gray-400 px-4 rounded-r
+                  d-flex justify-content-between align-items-center
+              ">
+                <GoMilestone className="ms-1 bg-white"/>
+                <span className="ms-1 text-sm font-medium"> Milestones </span>
+                <span
+                    className="ms-1 inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">9</span>
+              </button>
+            </div>
+
+            <button className="bg-blue-500 hover:bg-blue-700 text-white text-base font-semibold px-4 rounded">
+              Button
+            </button>
+          </div>
+        </div>
+
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-          <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+          <div className="shadow border-b border-gray-200 sm:rounded-lg">
             <table className="min-w-full divide-y divide-gray-200 table-issues">
               <thead className="bg-gray-50">
                 <tr className="table-row-issues">
@@ -35,6 +105,7 @@ export const ListIssues = () => {
                       name=""
                       type="checkbox"
                       className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded me-2"
+                      onChange={selectAllIssues}
                     />
                     
                     <a href="#">
@@ -48,87 +119,111 @@ export const ListIssues = () => {
                       <span className="ms-1"> {0} Closed </span>
                     </a>
 
-                    <ul className="ms-auto">
-                      <span>  </span>
-                    </ul>
+                    <div className="container-option-buttons normal-case d-flex ms-auto">
 
-                  </th>
-                  
-                  {/* <th
-                    scope="col"
-                    className="font-medium text-gray-500
-                      uppercase"
-                  >
-                  </th>
+                      <li class="nav-item d-flex align-items-center">
+                        <div className="dropdown">
+                          <a className="btn btn-outline-secondary btn-sm dropdown-toggle d-flex align-items-center ms-1" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            Author
+                          </a>
 
-                  <th
-                    scope="col"
-                    className="font-medium text-gray-500
-                      uppercase tracking-wider"
-                  >
-                    
-                  </th> */}
-                  {/* <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    Title
+                          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-options" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">New repository</a></li>
+                            <li><a class="dropdown-item" href="#"> Import respository </a></li>
+                            <li><a class="dropdown-item" href="#"> New gist </a></li>
+                            <li><a class="dropdown-item" href="#"> New organization </a></li>
+                          </ul>
+                        </div>
+                      </li>
+
+                      <li class="nav-item d-flex align-items-center">
+                        <div className="dropdown">
+                          <a className="btn btn-outline-secondary btn-sm dropdown-toggle d-flex align-items-center ms-1" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            Label
+                          </a>
+
+                          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-options" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">New repository</a></li>
+                            <li><a class="dropdown-item" href="#"> Import respository </a></li>
+                            <li><a class="dropdown-item" href="#"> New gist </a></li>
+                            <li><a class="dropdown-item" href="#"> New organization </a></li>
+                          </ul>
+                        </div>
+                      </li>
+
+                      <li class="nav-item d-flex align-items-center">
+                        <div className="dropdown">
+                          <a className="btn btn-outline-secondary btn-sm dropdown-toggle d-flex align-items-center ms-1" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            Projects
+                          </a>
+
+                          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-options" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">New repository</a></li>
+                            <li><a class="dropdown-item" href="#"> Import respository </a></li>
+                            <li><a class="dropdown-item" href="#"> New gist </a></li>
+                            <li><a class="dropdown-item" href="#"> New organization </a></li>
+                          </ul>
+                        </div>
+                      </li>
+
+                      <li class="nav-item d-flex align-items-center">
+                        <div className="dropdown">
+                          <a className="btn btn-outline-secondary btn-sm dropdown-toggle d-flex align-items-center ms-1" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            Milestones
+                          </a>
+
+                          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-options" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">New repository</a></li>
+                            <li><a class="dropdown-item" href="#"> Import respository </a></li>
+                            <li><a class="dropdown-item" href="#"> New gist </a></li>
+                            <li><a class="dropdown-item" href="#"> New organization </a></li>
+                          </ul>
+                        </div>
+                      </li>
+
+                      <li class="nav-item d-flex align-items-center">
+                        <div className="dropdown">
+                          <a className="btn btn-outline-secondary btn-sm dropdown-toggle d-flex align-items-center ms-1" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            Assignee
+                          </a>
+
+                          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-options" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">New repository</a></li>
+                            <li><a class="dropdown-item" href="#"> Import respository </a></li>
+                            <li><a class="dropdown-item" href="#"> New gist </a></li>
+                            <li><a class="dropdown-item" href="#"> New organization </a></li>
+                          </ul>
+                        </div>
+                      </li>
+
+                      <li class="nav-item d-flex align-items-center">
+                        <div className="dropdown">
+                          <a className="btn btn-outline-secondary btn-sm dropdown-toggle d-flex align-items-center ms-1" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            Sort
+                          </a>
+
+                          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-options" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">New repository</a></li>
+                            <li><a class="dropdown-item" href="#"> Import respository </a></li>
+                            <li><a class="dropdown-item" href="#"> New gist </a></li>
+                            <li><a class="dropdown-item" href="#"> New organization </a></li>
+                          </ul>
+                        </div>
+                      </li>
+
+                      
+
+                    </div>
+                      
                   </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    Status
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    Role
-                  </th> */}
-                  {/* <th scope="col" className="relative px-6 py-3">
-                    <span className="sr-only">Edit</span>
-                  </th> */}
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {people.map((person) => (
-                  <tr key={person.email}>
-
-                    <td className="px-6 py-4 whitespace-nowrap d-flex align-items-start">
-                      <input
-                          id=""
-                          name=""
-                          type="checkbox"
-                          className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded me-2"
-                        />
-
-                        <FiStopCircle className="icon-issue-item ms-2 text-green-500"/>
-
-                        <div className="d-flex flex-column ms-3">
-                          <span className="title text-base font-bold"> This is my title </span>
-                          <span className="text-description text-xs"> This is my description </span>
-                        </div>
-
-                    </td>
-                    {/* <td className="px-6 py-4 whitespace-nowrap">
-                      
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                        Active
-                      </span>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{person.role}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                      <a href="#" className="text-indigo-600 hover:text-indigo-900">
-                        Edit
-                      </a>
-                    </td> */}
-                  </tr>
-                ))}
+                {
+                  issueItems.map((issue) => (
+                      <div> element </div>
+                  ))
+                }
               </tbody>
             </table>
           </div>
