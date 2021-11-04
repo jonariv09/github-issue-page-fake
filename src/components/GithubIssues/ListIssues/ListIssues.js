@@ -3,7 +3,7 @@ import { FiCheck, FiStopCircle, FiTag } from "react-icons/fi"
 import { GoMilestone } from "react-icons/go";
 import { useDispatch, useSelector } from "react-redux";
 import './ListIssues.css';
-import {createRef} from "react";
+import {createRef, useEffect} from "react";
 
 /* This example requires Tailwind CSS v2.0+ */
 const issues = [
@@ -21,6 +21,7 @@ export const ListIssues = () => {
 
   const dispatch = useDispatch();
   const dropdownRef = createRef();
+  const buttonRef = createRef();
   const { allSelected } = useSelector(state => state.issues);
   let issueItems = [];
 
@@ -42,6 +43,26 @@ export const ListIssues = () => {
       dropdown.className = dropdown.className.replace("dropdown-active", "");
   }
 
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (buttonRef.current
+          && dropdownRef.current
+          && !buttonRef.current.contains(event.target)
+          && !dropdownRef.current.contains(event.target)
+          && dropdownRef.current.className.includes("dropdown-active")
+      ) {
+        dropdownRef.current.className = dropdownRef.current.className.replace("dropdown-active", "");
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+
+  }, [dropdownRef])
+
   return (
     <div className="">
       <div className="container mt-3">
@@ -54,6 +75,7 @@ export const ListIssues = () => {
                 <button className="btn hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 dropdown-toggle text-sm font-semibold dropdown-toggle" type="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                   onClick={displayMenu}
+                  ref={buttonRef}
                 >
                   Filters
                 </button>
